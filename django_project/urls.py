@@ -3,9 +3,8 @@ from django.urls import path, include
 from appSW import views, forms
 
 urlpatterns = [
-    path('accounts/register/', views.register_user),
+    path('accounts/register/', views.register_user, name='register'),
     path('accounts/confirm_logout/', views.confirm_logout, name="confirm_logout"),
-    path('accounts/logout/', views.logout_user, name="logout_user"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('',views.homePage,name="homePage"), 
     path('sequelsPros/',views.sequelsProsPage,name="sequelsProsPage"),

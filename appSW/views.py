@@ -108,10 +108,6 @@ def register_user(request):
 def confirm_logout(request):
   if request.method == "POST":
     if 'Y' in request.POST:
-      return(redirect('logout_user'))
+      return(redirect('logout'))
     return redirect('homePage')
   return render(request, 'logout.html')
-
-def logout_user(request):
-  logout(request)
-  return redirect('/accounts/login/')
