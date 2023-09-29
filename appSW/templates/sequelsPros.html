@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Sequels | Pontos Positivos</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  
+  <h2>Pontos positivos das Sequels</h2>
+  
+  <ul>
+    {% for pro in sequelsPros %}
+      <li>{{ pro.content}} <a href={% url 'update_sequelsPros' sequelsPros_id=pro.id %}><button class="btn"><i class="fa fa-pencil-square"></i></button></a><a href={% url 'del_sequelsPros' sequelsPros_id=pro.id %}><button class="btn"><i class="fa fa-trash"></i></button></a></li>
+    {% endfor %}
+    <small>É só isso mesmo</small>
+  </ul>
+
+  <a href={% url 'add_sequelsPros' %}><button class="btn"><i class="fa fa-plus-square"></i></button></a>
+  
+  <a href={% url 'homePage' %}><button class="btn"><i class="fa fa-home"></i></button></a>
+  
+</body>

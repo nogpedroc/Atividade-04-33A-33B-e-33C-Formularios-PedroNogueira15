@@ -1,0 +1,29 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>SW | Capítulos</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+  <h2>Ordem original</h2>
+  <ol>
+    {% for chp in chapters %}
+      <li><i>{{ chp.title }}</i> ({{ chp.translation_PTBR}}) <a href={% url 'update_chapters' chapters_id=chp.id %}><button class=btn><i class="fa fa-pencil-square"></i></button></a><a href={% url 'del_chapters' chapters_id=chp.id %}><button class="btn"><i class="fa fa-trash"></i></button></a></li>
+    {% endfor %}
+  </ol>
+
+  <a href={% url 'add_chapters' %}><button class=btn><i class="fa fa-plus-square"></i></button></a>
+  
+  <a href={% url 'homePage' %}><button class=btn><i class="fa fa-home"></i></button></a>
+  
+</body>

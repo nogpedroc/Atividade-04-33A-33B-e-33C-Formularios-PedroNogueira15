@@ -1,0 +1,77 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>SW | Ordem Correta dos Nomes</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="text-align: justify;">
+  
+  <h1 style="text-align: center;">Ordem Correta dos Nomes</h1>
+  
+  <p>
+    Essa página contém uma pequena apresentação sobre uma teoria envolvendo a emblemática saga de filmes <i>Star Wars</i>. <u><b>Os nomes dos filmes está na ordem completamente errada!</b></u> Entendo que praticamente qualquer crítica à obra-prima de George Lucas pode parecer uma revoltante blasfêmea, mas há uma lógica <u>infalível</u> por trás dessa teoria.
+  </p>
+
+  <div class="blue-center">
+    <div><img src="{% static 'images/Star_Wars_Logo.png' %}" width="400"></div>
+  </div>
+  
+  <div>
+    <h3>Ordem original <a href={% url 'chaptersPage' %}><button class=btn><i class="fa fa-pencil-square" ></i></button></a></h3>
+    <ol>
+      {% for chp in chapters %}
+        <li><i>{{ chp.title }}</i> ({{ chp.translation_PTBR}})</li>
+      {% endfor %}
+    </ol>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <th>Filme</th>
+        <th>Nome Novo</th>
+        <th>Motivo</th>
+      </tr>
+      {% for inf in tableInfo %}
+        <tr>
+          <td>{{ inf.num }}</td>
+          <td>{{ inf.newName }}</td>
+          <td>{{ inf.reason }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+  <div>
+    <h4>Com isso podemos ver que, contrário a opinião popular, as <i>Sequels</i> tem pontos bons: <a href={% url 'sequelsProsPage' %}><button class="btn"><i class="fa fa-pencil-square"></i></button></a></h4>
+    <ul>
+      {% for pro in sequelsPros %}
+        <li>{{ pro.content}}</li>
+      {% endfor %}
+      <small>É só isso mesmo</small>
+    </ul>
+  </div>
+
+  <div class="last-part">
+    <h4>Isso resume essa incrível teoria que, na minha opinião, é a segunda melhor de Star Wars, pois a primeira sempre será a de que Jar Jar Binks é, na verdade, <strong>um Lorde Sith</strong></h4>
+  
+    <div class="blue-center"><img src="{% static 'images/jarjarsith.jpg' %}" width="400"></div>
+    
+    <p>Infelizmente as informações mostradas na página não são fruto da minha própria imaginação, mas foram baseadas em um vídeo da rede-social <i>TikTok</i>, referenciado em um <a href="https://www.ign.com/articles/heres-why-the-star-wars-movies-might-need-to-swap-names" target="_blank">artigo da IGN</a> . 
+    </p>
+    <p>
+      Clique nos ícones <i class="fa fa-pencil-square"></i> para alterar as listas. Você pode adicionar novos objetos e atualizar ou excluir os já existentes.
+    </p>
+  </div>
+</body>
+
+</html>
